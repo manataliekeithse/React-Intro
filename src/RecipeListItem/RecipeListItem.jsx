@@ -1,21 +1,22 @@
+import PropTypes from "prop-types";
+
 export const RecipeListItem = ({
-  id,
   name,
   steps,
   timers,
   imageURL,
   originalURL,
 }) => {
+  const isLoggedIn = true;
+
   return (
     <li>
+      {isLoggedIn ? <p>User is logged in</p> : <p>User is logged out</p>}
+
       <img src={imageURL} alt="" width="240" />
       <h2>{name}</h2>
 
       <div>
-        <div>
-          <span>Icon</span>
-          <p>{id}</p>
-        </div>
         <div>
           <span>Icon</span>
           <p>{name}</p>
@@ -35,4 +36,11 @@ export const RecipeListItem = ({
       </div>
     </li>
   );
+};
+
+RecipeListItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  timers: PropTypes.number.isRequired,
+  steps: PropTypes.string.isRequired,
+  originalURL: PropTypes.string.isRequired,
 };
